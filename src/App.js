@@ -2,28 +2,46 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      sections: [],
+    };
+  }
+
+  addCVSection = (entries, title) => {
+    this.setState({
+      sections: this.state.sections.concat(
+        <div key={title}>
+          <h3>{title}</h3>
+          {entries.map((entry, index) => (
+            <div key={index}>
+              <p>{entry.title}:</p> <p>{entry.value}</p>
+            </div>
+          ))}
+        </div>
+      ),
+    });
+  };
+
   render() {
     return (
       <div>
-        <form>
+        <form key={0}>
           <FormSection
             title="Contact Information"
             titles={["Name", "Phone Number", "Email", "Address"]}
+            getInfo={this.addCVSection}
           ></FormSection>
         </form>
+        <div className="CV" key={1}>
+          {this.state.sections}
+        </div>
       </div>
     );
   }
 }
-
-// class Form extends Component {
-//   // constructor(props) {
-//   //   super(props);
-//   // }
-//   render(){
-//     return <form>FormSection</form>
-//   }
-// }
 
 const Align = styled.div`
   display: flex;
@@ -35,8 +53,6 @@ const Align = styled.div`
 class FormSection extends Component {
   constructor(props) {
     super(props);
-
-    this.submitForm = this.submitForm.bind(this);
 
     this.children = this.props.titles.map((title, index) => (
       <Input
@@ -53,10 +69,14 @@ class FormSection extends Component {
     });
   };
 
-  submitForm(e) {
+  submitForm = (e) => {
     e.preventDefault();
-    console.log(this.state);
-  }
+    // const entries = [];
+    this.props.getInfo(
+      [{ title: "Name", value: "Dave" }],
+      "Contact Information"
+    );
+  };
 
   render() {
     return (
@@ -92,5 +112,20 @@ class Input extends Component {
     );
   }
 }
+
+// class CVSection extends Component {
+//   constructor(props) {
+//     super(props);
+
+//     this.children = this.props.entries.map((entry, index) => (
+//       <div key={index}>
+//         <p>{entry.title}:</p> <p>{entry.value}</p>
+//       </div>
+//     ));
+//   }
+//   render() {
+//     return <div>{this.children}</div>;
+//   }
+// }
 
 export default App;
