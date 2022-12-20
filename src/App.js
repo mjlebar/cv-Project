@@ -1,6 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+class CVsection extends Component {
+  render() {
+    return (
+      <div>
+        <h3>{this.props.title}</h3>
+        {this.props.entries.map((entry, index) => (
+          <div key={index}>
+            <p>{entry[0]}:</p> <p>{entry[1]}</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,22 +27,25 @@ class App extends Component {
   }
 
   addCVSection = (entries, title) => {
+    const newSection = (
+      <CVsection entries={entries} title={title} key={title}></CVsection>
+    );
     if (this.state.titles.includes(title)) {
-      return;
+      this.setState({
+        sections: this.state.sections.map((section) => {
+          if (section.props.title === title) {
+            return newSection;
+          } else {
+            return section;
+          }
+        }),
+      });
+    } else {
+      this.setState((state) => ({
+        titles: state.titles.concat(title),
+        sections: state.sections.concat(newSection),
+      }));
     }
-    this.setState((state) => ({
-      titles: state.titles.concat(title),
-      sections: state.sections.concat(
-        <div key={title}>
-          <h3>{title}</h3>
-          {entries.map((entry, index) => (
-            <div key={index}>
-              <p>{entry[0]}:</p> <p>{entry[1]}</p>
-            </div>
-          ))}
-        </div>
-      ),
-    }));
   };
 
   render() {
