@@ -7,22 +7,27 @@ class App extends Component {
 
     this.state = {
       sections: [],
+      titles: [],
     };
   }
 
   addCVSection = (entries, title) => {
-    this.setState({
-      sections: this.state.sections.concat(
+    if (this.state.titles.includes(title)) {
+      return;
+    }
+    this.setState((state) => ({
+      titles: state.titles.concat(title),
+      sections: state.sections.concat(
         <div key={title}>
           <h3>{title}</h3>
           {entries.map((entry, index) => (
             <div key={index}>
-              <p>{entry.title}:</p> <p>{entry.value}</p>
+              <p>{entry[0]}:</p> <p>{entry[1]}</p>
             </div>
           ))}
         </div>
       ),
-    });
+    }));
   };
 
   render() {
@@ -71,11 +76,7 @@ class FormSection extends Component {
 
   submitForm = (e) => {
     e.preventDefault();
-    // const entries = [];
-    this.props.getInfo(
-      [{ title: "Name", value: "Dave" }],
-      "Contact Information"
-    );
+    this.props.getInfo(Object.entries(this.state), this.props.title);
   };
 
   render() {
@@ -112,20 +113,5 @@ class Input extends Component {
     );
   }
 }
-
-// class CVSection extends Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.children = this.props.entries.map((entry, index) => (
-//       <div key={index}>
-//         <p>{entry.title}:</p> <p>{entry.value}</p>
-//       </div>
-//     ));
-//   }
-//   render() {
-//     return <div>{this.children}</div>;
-//   }
-// }
 
 export default App;
