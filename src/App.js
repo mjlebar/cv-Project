@@ -1,20 +1,6 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
-class CVsection extends Component {
-  render() {
-    return (
-      <div>
-        <h3>{this.props.title}</h3>
-        {this.props.entries.map((entry, index) => (
-          <div key={index}>
-            <p>{entry[0]}:</p> <p>{entry[1]}</p>
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+import { CVsection } from "./Components/CVsection";
+import { FormSection } from "./Components/FormSection";
 
 class App extends Component {
   constructor(props) {
@@ -25,12 +11,16 @@ class App extends Component {
       titles: [],
     };
   }
+  // the state consists of a list of sections and their titles - we track the titles so we can efficiently check if a title has already been added
 
   addCVSection = (entries, title) => {
     const newSection = (
       <CVsection entries={entries} title={title} key={title}></CVsection>
     );
+    // we construct a new section with the given information
+
     if (this.state.titles.includes(title)) {
+      // if that section has already been submitted, we want to update that section with the new section
       this.setState({
         sections: this.state.sections.map((section) => {
           if (section.props.title === title) {
@@ -41,6 +31,7 @@ class App extends Component {
         }),
       });
     } else {
+      // otherwise, we add in the new section
       this.setState((state) => ({
         titles: state.titles.concat(title),
         sections: state.sections.concat(newSection),
@@ -57,76 +48,15 @@ class App extends Component {
             titles={["Name", "Phone Number", "Email", "Address"]}
             getInfo={this.addCVSection}
           ></FormSection>
+          <FormSection
+            title="Employment Information"
+            titles={["Name", "Phone Number", "Email", "Address"]}
+            getInfo={this.addCVSection}
+          ></FormSection>
         </form>
         <div className="CV" key={1}>
           {this.state.sections}
         </div>
-      </div>
-    );
-  }
-}
-
-const Align = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-`;
-
-class FormSection extends Component {
-  constructor(props) {
-    super(props);
-
-    this.children = this.props.titles.map((title, index) => (
-      <Input
-        key={index}
-        title={title}
-        onChange={this.handleFieldChange}
-      ></Input>
-    ));
-  }
-
-  handleFieldChange = (title, value) => {
-    this.setState({
-      [title]: value,
-    });
-  };
-
-  submitForm = (e) => {
-    e.preventDefault();
-    this.props.getInfo(Object.entries(this.state), this.props.title);
-  };
-
-  render() {
-    return (
-      <Align>
-        <h3>{this.props.title}</h3>
-        {this.children}
-        <button className="submit-btn" onClick={this.submitForm}>
-          Submit
-        </button>
-      </Align>
-    );
-  }
-}
-
-class Input extends Component {
-  handleText = (e) => {
-    const text = e.target.value;
-    this.props.onChange(this.props.title, text);
-  };
-
-  render() {
-    return (
-      <div>
-        <label style={{ margin: "10px" }} htmlFor={this.props.title}>
-          {this.props.title}:
-        </label>
-        <input
-          type="text"
-          onChange={this.handleText}
-          id={this.props.title}
-        ></input>
       </div>
     );
   }
