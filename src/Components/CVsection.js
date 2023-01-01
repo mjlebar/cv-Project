@@ -1,16 +1,17 @@
 import { Component } from "react";
+import { Align } from "../Styles/Align";
 
 class CVsection extends Component {
   render() {
     return (
-      <div>
+      <Align>
         <h3>{this.props.title}</h3>
-        {this.props.entries.map((entry, index) => (
+        {Object.entries(this.props.entries).map((entry, index) => (
           <div key={index}>
             <p>{entry[0]}:</p> <p>{entry[1]}</p>
           </div>
         ))}
-      </div>
+      </Align>
     );
   }
 }
