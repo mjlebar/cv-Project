@@ -1,31 +1,18 @@
-import { FormSection } from "./FormSection";
-import { JobAdd } from "./JobAdd";
+import { EntryAdd } from "./EntryAdd";
 import { JobInput } from "./JobInput";
+import { StructuredSection } from "./StructuredSection";
 
-class EmploymentSection extends FormSection {
+class EmploymentSection extends StructuredSection {
   constructor(props) {
     super(props);
     this.state = {
       inputs: [
-        <JobAdd key={`JobAdd`} newJob={this.newJob}></JobAdd>,
+        <EntryAdd type="Job" key={`JobAdd`} newEntry={this.newJob}></EntryAdd>,
         <JobInput key={0} number={1} onChange={this.onChange}></JobInput>,
       ],
       displayData: [{ Job: 1 }],
     };
   }
-
-  onChange = (title, value, index) => {
-    this.setState((state) => ({
-      displayData: state.displayData.map((entry) => {
-        if (entry.Job === index) {
-          entry[title] = value;
-          return entry;
-        } else {
-          return entry;
-        }
-      }),
-    }));
-  };
 
   newJob = (e) => {
     e.preventDefault();

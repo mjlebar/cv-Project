@@ -2,11 +2,6 @@ import { Component } from "react";
 import { Align } from "../Styles/Align";
 
 class StructuredCVsection extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.entries);
-  }
-
   render() {
     return (
       <div>
