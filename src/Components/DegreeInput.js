@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Input } from "./Input";
-import { Align } from "../Styles/FormSectionDiv";
 
 class DegreeInput extends Component {
   onChange = (title, value) => {
@@ -19,5 +18,7 @@ class DegreeInput extends Component {
     );
   }
 }
+
+// A subcomponent of the educational information section to input the information for a specific degree
 
 export { DegreeInput };

@@ -7,12 +7,12 @@ class FormSection extends Component {
     // console.log(this.state.inputs);
     this.props.getInfo(this.state.displayData, this.props.title);
   };
-  //we pass the form a "getInfo" function from the app, and when the form is submitted it passes the app the information about what has been inputted into the form
+  //we pass the form a "getInfo" function from the app, and when the form is submitted it passes the app the information about what has been inputted into the form. All form sections (contact, educational, employment) so we implement it in what's essentially an interface or an abstract class
 
   render() {
     return (
       <FormSectionDiv>
-        <h3>{this.props.title}</h3>
+        <h3 style={{ textAlign: "center" }}>{this.props.title}</h3>
         {this.state.inputs}
         <button className="submit-btn" onClick={this.submitForm}>
           Submit
@@ -20,6 +20,7 @@ class FormSection extends Component {
       </FormSectionDiv>
     );
   }
+  // similarly, they all consist of a title, some inputs, and a submit button... the variation comes into play with what the inputs are, so the more specific classes extending FormSection contain specific intializations for state
 }
 
 export { FormSection };

@@ -1,7 +1,7 @@
 import { FormSection } from "./FormSection";
 import { Input } from "./Input";
 
-class GeneralSection extends FormSection {
+class ContactSection extends FormSection {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,5 +26,6 @@ class GeneralSection extends FormSection {
     }));
   };
 }
+// The section of the input that handles contact information. Fairly simple, just updates a prop with inputted data whenever a field is changed
 
-export { GeneralSection };
+export { ContactSection };

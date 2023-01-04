@@ -23,6 +23,6 @@ class Input extends Component {
     );
   }
 }
-// A section of the form where we can enter some input
+// A section of the input form where we can enter a single line of input, ie job title or phone number
 
 export { Input };

@@ -9,5 +9,6 @@ class EntryAdd extends Component {
     );
   }
 }
+// A button for the employment and educational sections, allowing for a new entry (either a job or a degree)
 
 export { EntryAdd };

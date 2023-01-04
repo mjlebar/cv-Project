@@ -9,7 +9,8 @@ const CVDiv = styled.div`
   padding: 5px;
   width: 80%;
   height: 1700px;
+  margin-left: 25px;
 `;
-// Styles the form section so that it's nicely aligned
+// Styles the CV... aligns it, sizes it, and gives it borders
 
 export { CVDiv };

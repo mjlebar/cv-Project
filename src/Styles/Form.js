@@ -7,7 +7,7 @@ const Form = styled.div`
   gap: 25px;
   height: 100%;
   padding: 12px;
-  border-radius: 10px;
 `;
+// styling for the overall input form - basically just makes everything nicely aligned
 
 export { Form };

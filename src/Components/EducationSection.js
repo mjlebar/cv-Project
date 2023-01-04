@@ -17,6 +17,7 @@ class EducationSection extends StructuredSection {
       displayData: [{ num: 1 }],
     };
   }
+  // the onChange function used here is a touch complicated, and shared with educational section. Find the function in StructuredSection
 
   newDegree = (e) => {
     e.preventDefault();
@@ -33,6 +34,8 @@ class EducationSection extends StructuredSection {
       displayData: state.displayData.concat({ num: degNum }),
     }));
   };
+  // adds in a new degree, and by updating state rerenders
 }
+// this is the part of the input form where education is added. Since we need to have a flexible number of degrees, we include a function to add new degrees
 
 export { EducationSection };

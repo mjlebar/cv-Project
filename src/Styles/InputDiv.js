@@ -6,6 +6,6 @@ const InputDiv = styled.div`
   align-items: center;
   gap: 5px;
 `;
-// Styles the form section so that it's nicely aligned
+// A div to make inputs display stacked top to bottom, so the sections look relatively uniform
 
 export { InputDiv };

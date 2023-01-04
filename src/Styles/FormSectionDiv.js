@@ -9,10 +9,10 @@ const FormSectionDiv = styled.div`
   border-radius: 8px;
   padding: 15px;
   margin-block: 25px;
-  margin-left: 10px;
+  margin-inline: 10px;
   width: 80%;
   background-color: #ece8dd;
 `;
-// Styles the form section so that it's nicely aligned
+// the styling for a section of the input, ie education section or contact section. Aligns it, sets borders, and gives it a gentle coloring to visually distinguish from the rest of the page
 
 export { FormSectionDiv };

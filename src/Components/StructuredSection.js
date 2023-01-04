@@ -14,4 +14,6 @@ class StructuredSection extends FormSection {
     }));
   };
 }
+
+// All this class does is contain an "onChange" function for the employment and educational section. Since display data can contain a number of different entries (ie jobs or degrees) we need the map function to make sure that only the relevant entry is updated. The index variable carries that information. The title tells us which property in the entry needs to be updated, and the value tells us what the new value for the property should be
 export { StructuredSection };

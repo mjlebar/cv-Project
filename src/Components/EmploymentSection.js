@@ -13,6 +13,7 @@ class EmploymentSection extends StructuredSection {
       displayData: [{ num: 1 }],
     };
   }
+  // the onChange function used here is a touch complicated, and shared with educational section. Find the function in StructuredSection
 
   newJob = (e) => {
     e.preventDefault();
@@ -30,5 +31,7 @@ class EmploymentSection extends StructuredSection {
     }));
   };
 }
+
+// this is the part of the input form where employment is added. Since we need to have a flexible number of jobs, we include a function to add new jobs
 
 export { EmploymentSection };
