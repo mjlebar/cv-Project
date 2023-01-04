@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Align } from "../Styles/Align";
+import { FormSectionDiv } from "../Styles/FormSectionDiv";
 
 class FormSection extends Component {
   submitForm = (e) => {
@@ -11,13 +11,13 @@ class FormSection extends Component {
 
   render() {
     return (
-      <Align>
+      <FormSectionDiv>
         <h3>{this.props.title}</h3>
         {this.state.inputs}
         <button className="submit-btn" onClick={this.submitForm}>
           Submit
         </button>
-      </Align>
+      </FormSectionDiv>
     );
   }
 }

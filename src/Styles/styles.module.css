@@ -1,0 +1,10 @@
+.input-form {
+  display: flex;
+  border-right: 5px solid black;
+  height: 100%;
+  flex-direction: column;
+}
+
+body {
+  height: 100%;
+}

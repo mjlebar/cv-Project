@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { InputDiv } from "../Styles/InputDiv";
 
 class Input extends Component {
   handleText = (e) => {
@@ -9,7 +10,7 @@ class Input extends Component {
 
   render() {
     return (
-      <div>
+      <InputDiv>
         <label style={{ margin: "10px" }} htmlFor={this.props.title}>
           {this.props.title}:
         </label>
@@ -18,7 +19,7 @@ class Input extends Component {
           onChange={this.handleText}
           id={this.props.title}
         ></input>
-      </div>
+      </InputDiv>
     );
   }
 }

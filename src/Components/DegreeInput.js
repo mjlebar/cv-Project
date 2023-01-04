@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Input } from "./Input";
-import { Align } from "../Styles/Align";
+import { Align } from "../Styles/FormSectionDiv";
 
 class DegreeInput extends Component {
   onChange = (title, value) => {
@@ -8,14 +8,14 @@ class DegreeInput extends Component {
   };
   render() {
     return (
-      <Align>
-        <h4>Degree {this.props.number}</h4>
+      <div>
+        <h4 style={{ textAlign: "center" }}>Degree {this.props.number}</h4>
         <Input title="School" onChange={this.onChange}></Input>
         <Input title="Degree" onChange={this.onChange}></Input>
         <Input title="Start" onChange={this.onChange}></Input>
         <Input title="End" onChange={this.onChange}></Input>
         <Input title="Description" onChange={this.onChange}></Input>
-      </Align>
+      </div>
     );
   }
 }

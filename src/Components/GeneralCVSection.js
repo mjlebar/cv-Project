@@ -1,11 +1,11 @@
 import { Component } from "react";
-import { Align } from "../Styles/Align";
+import { Align } from "../Styles/FormSectionDiv";
 
 class GeneralCVsection extends Component {
   render() {
     return (
-      <Align>
-        <h2>{this.props.entries.Name}</h2>
+      <div>
+        <h1>{this.props.entries.Name}</h1>
         <div>
           <p>{this.props.entries["Phone Number"]}</p>
         </div>
@@ -15,7 +15,7 @@ class GeneralCVsection extends Component {
         <div>
           <p>{this.props.entries.Address}</p>
         </div>
-      </Align>
+      </div>
     );
   }
 }

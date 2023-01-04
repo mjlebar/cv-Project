@@ -14,7 +14,7 @@ class EducationSection extends StructuredSection {
         ></EntryAdd>,
         <DegreeInput key={0} number={1} onChange={this.onChange}></DegreeInput>,
       ],
-      displayData: [{ Degree: 1 }],
+      displayData: [{ num: 1 }],
     };
   }
 
@@ -30,7 +30,7 @@ class EducationSection extends StructuredSection {
     );
     this.setState((state) => ({
       inputs: state.inputs.concat(newJob),
-      displayData: state.displayData.concat({ Degree: degNum }),
+      displayData: state.displayData.concat({ num: degNum }),
     }));
   };
 }

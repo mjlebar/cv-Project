@@ -10,7 +10,7 @@ class EmploymentSection extends StructuredSection {
         <EntryAdd type="Job" key={`JobAdd`} newEntry={this.newJob}></EntryAdd>,
         <JobInput key={0} number={1} onChange={this.onChange}></JobInput>,
       ],
-      displayData: [{ Job: 1 }],
+      displayData: [{ num: 1 }],
     };
   }
 
@@ -26,7 +26,7 @@ class EmploymentSection extends StructuredSection {
     );
     this.setState((state) => ({
       inputs: state.inputs.concat(newJob),
-      displayData: state.displayData.concat({ Job: jobNum }),
+      displayData: state.displayData.concat({ num: jobNum }),
     }));
   };
 }
