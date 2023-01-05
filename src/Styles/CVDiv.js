@@ -6,9 +6,10 @@ const CVDiv = styled.div`
   align-items: center;
   border: 5px solid black;
   border-radius: 5px;
-  padding: 5px;
-  width: 80%;
-  height: 1700px;
+  padding-block: 25px;
+
+  width: 70%;
+  height: 1200px;
   margin-left: 25px;
 `;
 // Styles the CV... aligns it, sizes it, and gives it borders

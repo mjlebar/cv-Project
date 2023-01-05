@@ -1,15 +1,16 @@
 import { Component } from "react";
+import { CVSection } from "../Styles/CVSection";
 import { CVEntry } from "./CVEntry";
 
 class StructuredCVsection extends Component {
   render() {
     return (
-      <div>
+      <CVSection>
         <h2>{this.props.title}</h2>
         {this.props.entries.map((entry, index) => (
           <CVEntry entry={entry} key={index}></CVEntry>
         ))}
-      </div>
+      </CVSection>
     );
   }
 }
