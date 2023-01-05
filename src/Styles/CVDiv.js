@@ -8,7 +8,7 @@ const CVDiv = styled.div`
   border-radius: 5px;
   padding-block: 25px;
 
-  width: 70%;
+  width: 80%;
   height: 1200px;
   margin-left: 25px;
 `;

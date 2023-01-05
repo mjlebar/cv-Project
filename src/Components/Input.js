@@ -11,7 +11,7 @@ class Input extends Component {
   render() {
     return (
       <InputDiv>
-        <label style={{ margin: "10px" }} htmlFor={this.props.title}>
+        <label style={{ margin: "2px" }} htmlFor={this.props.title}>
           {this.props.title}:
         </label>
         <input
