@@ -7,6 +7,7 @@ import { EducationSection } from "./Components/EducationSection";
 import { ContactCVsection } from "./Components/ContactCVSection";
 import { CVDiv } from "./Styles/CVDiv";
 import { Form } from "./Styles/Form";
+import { Swap } from "./Styles/Swap";
 
 class App extends Component {
   constructor(props) {
@@ -34,14 +35,16 @@ class App extends Component {
               Company: "Schuler Scholar Program",
               Start: "July 2019",
               End: "June 2022",
-              Description: "Academic support for URM",
+              Description:
+                "I have taken a class covering Data Structures and Algorithms in Java, reviewed the fundamentals of Java, and plan to build my own projects in Java. I have also been practicing SQL and making sure I understand how it works. While I do not have work experience as a software engineer, I believe that my background in math gives me the tools I need to excel as a developer.",
             },
             {
               Position: "Scholar Coach",
               Company: "Schuler Scholar Program",
               Start: "July 2019",
               End: "June 2022",
-              Description: "Academic support for URM",
+              Description:
+                "I have taken a class covering Data Structures and Algorithms in Java, reviewed the fundamentals of Java, and plan to build my own projects in Java. I have also been practicing SQL and making sure I understand how it works. While I do not have work experience as a software engineer, I believe that my background in math gives me the tools I need to excel as a developer.",
             },
           ]}
         ></StructuredCVsection>,
@@ -51,23 +54,17 @@ class App extends Component {
           entries={[
             {
               School: "Davidson College",
-              Degree: "Bachelor's of Arts",
+              Degree: "Bachelor's of Arts in Mathematics and Philosophy",
               Start: "July 2019",
               End: "June 2022",
-              Description: "",
-            },
-            {
-              School: "Davidson College",
-              Degree: "Bachelor's of Arts",
-              Start: "July 2019",
-              End: "June 2022",
-              Description: "",
+              Description:
+                "Magna Cum Laude, 3.9 GPA, High Honors in Philosophy",
             },
           ]}
         ></StructuredCVsection>,
       ],
       // this contains the list of sections in the CV ouptut - this can be loaded up with presets or left empty for the user to fill in
-      titles: [],
+      titles: ["Employment Information", "Educational Information"],
     };
   }
   // the state consists of a list of sections and their titles - we track the titles so we can efficiently check if a title has already been added
@@ -124,10 +121,24 @@ class App extends Component {
     }
   };
 
+  swapSections = () => {
+    const section0 = this.state.sections[0];
+    const section1 = this.state.sections[1];
+    const section2 = this.state.sections[2];
+
+    this.setState({
+      sections: [section0, section2, section1],
+    });
+  };
+
   render() {
     return (
       <Splitscreen>
         <Form className="input-form">
+          <p style={{ fontWeight: 700, textAlign: "center" }}>
+            You may need to scroll to see new jobs or degrees you add, or to see
+            all parts of the input form!
+          </p>
           <form key={0}>
             <ContactSection
               title="Contact Information"
@@ -147,6 +158,9 @@ class App extends Component {
         <CVDiv className="CV" key={1}>
           {this.state.sections}
         </CVDiv>
+        <Swap onClick={this.swapSections}>
+          Swap education and employment section order
+        </Swap>
       </Splitscreen>
     );
   }

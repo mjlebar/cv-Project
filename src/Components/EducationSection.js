@@ -12,7 +12,12 @@ class EducationSection extends StructuredSection {
           key={`DegreeAdd`}
           newEntry={this.newDegree}
         ></EntryAdd>,
-        <DegreeInput key={0} number={1} onChange={this.onChange}></DegreeInput>,
+        <DegreeInput
+          key={0}
+          number={1}
+          deleteEntry={this.deleteEntry}
+          onChange={this.onChange}
+        ></DegreeInput>,
       ],
       displayData: [{ num: 1 }],
     };
@@ -27,6 +32,7 @@ class EducationSection extends StructuredSection {
         key={this.state.inputs.length - 1}
         number={degNum}
         onChange={this.onChange}
+        deleteEntry={this.deleteEntry}
       ></DegreeInput>
     );
     this.setState((state) => ({

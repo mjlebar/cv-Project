@@ -1,6 +1,15 @@
 import { FormSection } from "./FormSection";
 
 class StructuredSection extends FormSection {
+  deleteEntry = (index) => {
+    console.log(index);
+    this.setState((state) => ({
+      inputs: state.inputs
+        .slice(0, index)
+        .concat(state.inputs.slice(index + 1)),
+    }));
+  };
+
   onChange = (title, value, index) => {
     this.setState((state) => ({
       displayData: state.displayData.map((entry) => {

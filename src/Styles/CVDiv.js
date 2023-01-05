@@ -7,10 +7,9 @@ const CVDiv = styled.div`
   border: 5px solid black;
   border-radius: 5px;
   padding-block: 25px;
-
-  width: 80%;
-  height: 1200px;
+  height: 1100px;
   margin-left: 25px;
+  overflow: scroll;
 `;
 // Styles the CV... aligns it, sizes it, and gives it borders
 

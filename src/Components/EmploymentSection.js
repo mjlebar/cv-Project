@@ -8,7 +8,12 @@ class EmploymentSection extends StructuredSection {
     this.state = {
       inputs: [
         <EntryAdd type="Job" key={`JobAdd`} newEntry={this.newJob}></EntryAdd>,
-        <JobInput key={0} number={1} onChange={this.onChange}></JobInput>,
+        <JobInput
+          key={0}
+          number={1}
+          deleteEntry={this.deleteEntry}
+          onChange={this.onChange}
+        ></JobInput>,
       ],
       displayData: [{ num: 1 }],
     };
@@ -23,6 +28,7 @@ class EmploymentSection extends StructuredSection {
         key={this.state.inputs.length - 1}
         number={jobNum}
         onChange={this.onChange}
+        deleteEntry={this.deleteEntry}
       ></JobInput>
     );
     this.setState((state) => ({

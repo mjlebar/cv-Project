@@ -5,9 +5,9 @@ const CVEntryDiv = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 50px 50px 2fr;
   border-block: 5px solid black;
-  width: 80%;
   gap: 15px;
   height: 75%;
+  width: 95%;
   border-block: 1px solid black;
   margin-block: 5px;
 `;
