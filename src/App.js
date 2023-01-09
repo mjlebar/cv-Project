@@ -18,53 +18,17 @@ class App extends Component {
         <ContactCVsection
           key="Contact Information Unfilled"
           title="Contact Information"
-          filled={true}
+          filled={false}
           entries={{
-            Name: "Matthew LeBar",
-            "Phone Number": "7405915792",
-            Email: "lebar.mj@gmail.com",
-            Address: "5023 N Winchester Ave",
+            Name: "",
+            "Phone Number": "",
+            Email: "",
+            Address: "",
           }}
         ></ContactCVsection>,
-        <StructuredCVsection
-          key="Employment Information"
-          title="Employment Information"
-          entries={[
-            {
-              Position: "Scholar Coach",
-              Company: "Schuler Scholar Program",
-              Start: "July 2019",
-              End: "June 2022",
-              Description:
-                "I have taken a class covering Data Structures and Algorithms in Java, reviewed the fundamentals of Java, and plan to build my own projects in Java. I have also been practicing SQL and making sure I understand how it works. While I do not have work experience as a software engineer, I believe that my background in math gives me the tools I need to excel as a developer.",
-            },
-            {
-              Position: "Scholar Coach",
-              Company: "Schuler Scholar Program",
-              Start: "July 2019",
-              End: "June 2022",
-              Description:
-                "I have taken a class covering Data Structures and Algorithms in Java, reviewed the fundamentals of Java, and plan to build my own projects in Java. I have also been practicing SQL and making sure I understand how it works. While I do not have work experience as a software engineer, I believe that my background in math gives me the tools I need to excel as a developer.",
-            },
-          ]}
-        ></StructuredCVsection>,
-        <StructuredCVsection
-          key="Educational Information"
-          title="Educational Information"
-          entries={[
-            {
-              School: "Davidson College",
-              Degree: "Bachelor's of Arts in Mathematics and Philosophy",
-              Start: "July 2019",
-              End: "June 2022",
-              Description:
-                "Magna Cum Laude, 3.9 GPA, High Honors in Philosophy",
-            },
-          ]}
-        ></StructuredCVsection>,
       ],
       // this contains the list of sections in the CV ouptut - this can be loaded up with presets or left empty for the user to fill in
-      titles: ["Employment Information", "Educational Information"],
+      titles: [],
     };
   }
   // the state consists of a list of sections and their titles - we track the titles so we can efficiently check if a title has already been added
@@ -134,7 +98,7 @@ class App extends Component {
   render() {
     return (
       <Splitscreen>
-        <Form className="input-form">
+        <Form key={"input-form"}>
           <p style={{ fontWeight: 700, textAlign: "center" }}>
             You may need to scroll to see new jobs or degrees you add, or to see
             all parts of the input form!
@@ -143,21 +107,19 @@ class App extends Component {
             <ContactSection
               title="Contact Information"
               titles={["Name", "Phone Number", "Email", "Address"]}
-              getInfo={this.addContactCVSection}
+              displayData={this.addContactCVSection}
             ></ContactSection>
             <EmploymentSection
               title="Employment Information"
-              getInfo={this.addStructuredCVSection}
+              displayData={this.addStructuredCVSection}
             ></EmploymentSection>
             <EducationSection
               title="Educational Information"
-              getInfo={this.addStructuredCVSection}
+              displayData={this.addStructuredCVSection}
             ></EducationSection>
           </form>
         </Form>
-        <CVDiv className="CV" key={1}>
-          {this.state.sections}
-        </CVDiv>
+        <CVDiv key={"CV"}>{this.state.sections}</CVDiv>
         <Swap onClick={this.swapSections}>
           Swap education and employment section order
         </Swap>

@@ -5,7 +5,7 @@ class FormSection extends Component {
   submitForm = (e) => {
     e.preventDefault();
     // console.log(this.state.inputs);
-    this.props.getInfo(this.state.displayData, this.props.title);
+    this.props.displayData(this.state.displayData, this.props.title);
   };
   //we pass the form a "getInfo" function from the app, and when the form is submitted it passes the app the information about what has been inputted into the form. All form sections (contact, educational, employment) so we implement it in what's essentially an interface or an abstract class
 

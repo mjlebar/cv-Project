@@ -7,7 +7,7 @@ const CVDiv = styled.div`
   border: 5px solid black;
   border-radius: 5px;
   padding-block: 25px;
-  height: 1100px;
+  height: 1200px;
   margin-left: 25px;
   overflow: scroll;
 `;

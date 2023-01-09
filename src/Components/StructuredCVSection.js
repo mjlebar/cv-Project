@@ -15,5 +15,6 @@ class StructuredCVsection extends Component {
   }
 }
 //  Constructs employment and educational sections of the CV. Made up of CVEntries (either degrees or jobs)
+// Constructed in App.js, using event listeners that are passed to the submission buttons on the input form
 
 export { StructuredCVsection };

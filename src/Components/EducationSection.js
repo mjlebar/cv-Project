@@ -16,32 +16,64 @@ class EducationSection extends StructuredSection {
           key={0}
           number={1}
           deleteEntry={this.deleteEntry}
-          onChange={this.onChange}
+          updateParent={this.onChange}
         ></DegreeInput>,
       ],
-      displayData: [{ num: 1 }],
+      displayData: [{ number: 1 }],
     };
   }
   // the onChange function used here is a touch complicated, and shared with educational section. Find the function in StructuredSection
 
+  deleteEntry = (indexToDelete) => {
+    let diff = 0;
+    // this tracks how much we need to update the number of each entry we're going through... once we go through the input to remove, we change this to -1 so that forthcoming entries are dropped down a number
+    this.setState((state) => ({
+      inputs: state.inputs
+        .map((entry, index) => {
+          if (entry.props.number === indexToDelete) {
+            diff--;
+            return null;
+          } else if (entry.props.type === "Degree") {
+            return entry;
+          } else {
+            return (
+              <DegreeInput
+                key={index - 1 + diff}
+                number={entry.props.number + diff}
+                deleteEntry={this.deleteEntry}
+                updateParent={this.onChange}
+              ></DegreeInput>
+            );
+          }
+        })
+        .filter((entry) => entry !== null),
+      displayData: state.displayData.slice(0, -1),
+    }));
+  };
+  // We need to make sure that job numbers (ie job 1, job 2, etc) update appropriately when we delete a job. To do this, we not only need to remove the appropriate job from the array but update each of the entries after it. That's what this array.map then .filter is doing. I know there are other ways to do this (eg array.reduce) but seems the cleanest to me. This is almost identical to the same named method in employment section - I would've combined the two, but I don't know of a convenient way to express the appropriate conditional in JSX yet.
+
   newDegree = (e) => {
     e.preventDefault();
     const degNum = this.state.inputs.length;
-    const newJob = (
+    const newDeg = (
       <DegreeInput
-        key={this.state.inputs.length - 1}
+        key={degNum - 1}
         number={degNum}
-        onChange={this.onChange}
+        updateParent={this.onChange}
         deleteEntry={this.deleteEntry}
       ></DegreeInput>
     );
+    const newEntry = { number: degNum };
+
     this.setState((state) => ({
-      inputs: state.inputs.concat(newJob),
-      displayData: state.displayData.concat({ num: degNum }),
+      inputs: state.inputs.concat(newDeg),
+      displayData: state.displayData.concat(newEntry),
     }));
   };
   // adds in a new degree, and by updating state rerenders
 }
 // this is the part of the input form where education is added. Since we need to have a flexible number of degrees, we include a function to add new degrees
+
+// to find the event listener used to submit data so it shows up on the CV, see the StructuredSection class
 
 export { EducationSection };

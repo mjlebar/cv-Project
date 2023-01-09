@@ -4,12 +4,15 @@ import { Input } from "./Input";
 
 class DegreeInput extends Component {
   onChange = (title, value) => {
-    this.props.onChange([title], value, this.props.number);
+    this.props.updateParent([title], value, this.props.number);
   };
 
   deleteEntry = (e) => {
     e.preventDefault();
-    this.props.deleteEntry(this.props.number);
+    if (window.confirm("Are you sure you want to delete this degree?")) {
+      alert("Degree deleted - submit form to update CV");
+      this.props.deleteEntry(this.props.number);
+    }
   };
 
   render() {
@@ -29,6 +32,6 @@ class DegreeInput extends Component {
   }
 }
 
-// A subcomponent of the educational information section to input the information for a specific degree
+// A subcomponent of the educational information section to input the information for a specific degree. Similar to the JobInput field, but I'm not sure how to combine them in a way that's more readable than this
 
 export { DegreeInput };

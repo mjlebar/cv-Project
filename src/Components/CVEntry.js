@@ -10,45 +10,45 @@ class CVEntry extends Component {
   render() {
     return (
       <CVEntryDiv>
-        {Object.entries(this.props.entry).map((subEntry, subIndex) => {
+        {Object.entries(this.props.entry).map((item, index) => {
           // we need this  switch statement because, with the way I've packaged css in this project, the only way to get elements to position correctly is to have them instantiate a JSX HTML type that contains the appropriate styling. Would be better to do via stylesheet - may change this when I revisit the project
-          switch (subEntry[0]) {
+          switch (item[0]) {
             case "Company":
             case "School":
               return (
-                <TopLeft key={subIndex}>
-                  <p>{subEntry[1]}</p>
+                <TopLeft key={index}>
+                  <p>{item[1]}</p>
                 </TopLeft>
               );
             case "Position":
             case "Degree":
               return (
-                <MidLeft key={subIndex}>
-                  <p>{subEntry[1]}</p>
+                <MidLeft key={index}>
+                  <p>{item[1]}</p>
                 </MidLeft>
               );
             case "Start":
               return (
-                <TopRight key={subIndex}>
-                  <p>{`${subEntry[1]}`}</p>
+                <TopRight key={index}>
+                  <p>{`${item[1]}`}</p>
                   <p>to</p>
                 </TopRight>
               );
             case "End":
               return (
-                <MidRight key={subIndex}>
-                  <p>{subEntry[1]}</p>
+                <MidRight key={index}>
+                  <p>{item[1]}</p>
                 </MidRight>
               );
             case "Description":
               return (
-                <Lower key={subIndex}>
-                  <p>{subEntry[1]}</p>
+                <Lower key={index}>
+                  <p>{item[1]}</p>
                 </Lower>
               );
 
             default:
-              return <div></div>;
+              return <div key={-1}></div>;
           }
         })}
         {/* we have the map to make sure we do not include the indexing information needed for clear input, i.e. job #1, degree #1, etc - that is not a part of typical CV styling. The css here is done by way of classes rather than importing CSS components, like the rest of the application, since that would involve some very complicated conditionsl here */}
