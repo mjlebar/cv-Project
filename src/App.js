@@ -54,6 +54,7 @@ class App extends Component {
     });
     // this updates the section with whatever has been submitted
   };
+  // this function is passed as an event listener to the submit function on the contact information section of the input form
 
   addStructuredCVSection = (entries, title) => {
     const newSection = (
@@ -85,6 +86,8 @@ class App extends Component {
     }
   };
 
+  // this function is passed as an event listener to the submit function on the employment and education sections of the input form
+
   swapSections = () => {
     const section0 = this.state.sections[0];
     const section1 = this.state.sections[1];
@@ -94,6 +97,7 @@ class App extends Component {
       sections: [section0, section2, section1],
     });
   };
+  // this swaps the education and employment information sections
 
   render() {
     return (

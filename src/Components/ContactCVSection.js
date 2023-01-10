@@ -7,27 +7,31 @@ import { IconText } from "../Styles/IconText.js";
 
 class ContactCVsection extends Component {
   render() {
-    return (
-      <div>
-        <h1>{this.props.entries.Name}</h1>
-        <IconText>
-          <Icon src={Phone} alt={"Phone logo"}></Icon>
-          <div>
-            <p>{this.props.entries["Phone Number"]}</p>
-          </div>
-        </IconText>
-        <IconText>
-          <Icon src={Email} alt={"Email logo"}></Icon>
-          <p>{this.props.entries.Email}</p>
-        </IconText>
-        <IconText>
-          <Icon src={Home} alt={"Home logo"}></Icon>
-          <p>{this.props.entries.Address}</p>
-        </IconText>
-      </div>
-    );
+    if (this.props.filled === false) {
+      return <div></div>;
+    } else {
+      return (
+        <div>
+          <h1>{this.props.entries.Name}</h1>
+          <IconText>
+            <Icon src={Phone} alt={"Phone logo"}></Icon>
+            <div>
+              <p>{this.props.entries["Phone Number"]}</p>
+            </div>
+          </IconText>
+          <IconText>
+            <Icon src={Email} alt={"Email logo"}></Icon>
+            <p>{this.props.entries.Email}</p>
+          </IconText>
+          <IconText>
+            <Icon src={Home} alt={"Home logo"}></Icon>
+            <p>{this.props.entries.Address}</p>
+          </IconText>
+        </div>
+      );
+    }
   }
 }
-// Const
+// Constructs the CV section that houses contact information
 
 export { ContactCVsection };

@@ -51,7 +51,7 @@ class CVEntry extends Component {
               return <div key={-1}></div>;
           }
         })}
-        {/* we have the map to make sure we do not include the indexing information needed for clear input, i.e. job #1, degree #1, etc - that is not a part of typical CV styling. The css here is done by way of classes rather than importing CSS components, like the rest of the application, since that would involve some very complicated conditionsl here */}
+        {/* we have the map to make sure we do not include the indexing information that we needed for clear input, i.e. job #1, degree #1, etc - that is not a part of the CV */}
       </CVEntryDiv>
     );
   }

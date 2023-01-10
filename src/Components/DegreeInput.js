@@ -6,6 +6,7 @@ class DegreeInput extends Component {
   onChange = (title, value) => {
     this.props.updateParent([title], value, this.props.number);
   };
+  // changes the parent (ie the containing education section) state to reflect these changes in its displayData, so it can pass that change on to the CV upon submission
 
   deleteEntry = (e) => {
     e.preventDefault();

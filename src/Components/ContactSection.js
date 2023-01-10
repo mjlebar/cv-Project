@@ -26,6 +26,6 @@ class ContactSection extends FormSection {
     }));
   };
 }
-// The section of the input that handles contact information. Fairly simple, just updates a prop with inputted data whenever a field is changed
+// The section of the input that handles contact information. Fairly simple, just updates the displayData state with inputted data whenever a field is changed. This looks quite different for the employment and education sections, as they need to encapsulate specific title value pairs within entries, since two different job entries will contain two instances of "company"
 
 export { ContactSection };

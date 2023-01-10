@@ -48,6 +48,6 @@ class Input extends Component {
     }
   }
 }
-// A section of the input form where we can enter a single line of input, ie job title or phone number. We have to do the switch because we want date inputs to be formatted as dates
+// A section of the input form where we can enter a single line of input, ie job title or phone number. We have to do the switch because we want date inputs to be formatted as dates, which requires a different change handler and a different input type
 
 export { Input };
