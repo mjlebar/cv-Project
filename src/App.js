@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { ContactSection } from "./Components/ContactSection";
-import { EmploymentSection } from "./Components/EmploymentSection";
 import { StructuredCVsection } from "./Components/StructuredCVSection";
 import { Splitscreen } from "./Styles/Splitscreen";
-import { EducationSection } from "./Components/EducationSection";
+import { StructuredSection } from "./Components/StructuredSection";
 import { ContactCVsection } from "./Components/ContactCVSection";
 import { CVDiv } from "./Styles/CVDiv";
 import { Form } from "./Styles/Form";
@@ -111,16 +110,16 @@ class App extends Component {
             <ContactSection
               title="Contact Information"
               titles={["Name", "Phone Number", "Email", "Address"]}
-              displayData={this.addContactCVSection}
+              sendToCV={this.addContactCVSection}
             ></ContactSection>
-            <EmploymentSection
+            <StructuredSection
               title="Employment Information"
-              displayData={this.addStructuredCVSection}
-            ></EmploymentSection>
-            <EducationSection
+              sendToCV={this.addStructuredCVSection}
+            ></StructuredSection>
+            <StructuredSection
               title="Educational Information"
-              displayData={this.addStructuredCVSection}
-            ></EducationSection>
+              sendToCV={this.addStructuredCVSection}
+            ></StructuredSection>
           </form>
         </Form>
         <CVDiv key={"CV"}>{this.state.sections}</CVDiv>
