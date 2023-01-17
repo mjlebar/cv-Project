@@ -6,7 +6,7 @@ class StructuredInput extends Component {
   onChange = (title, value) => {
     this.props.updateParent([title], value, this.props.number);
   };
-  // changes the parent (ie the containing education section) state to reflect these changes in its displayData, so it can pass that change on to the CV upon submission
+  // changes the parent (ie the containing education or employment section) state to reflect these changes in its displayData, so it can pass that change on to the CV upon submission
 
   deleteEntry = (e) => {
     e.preventDefault();
@@ -51,6 +51,6 @@ class StructuredInput extends Component {
   }
 }
 
-// A subcomponent of the educational information section to input the information for a specific degree. Similar to the JobInput field, but I'm not sure how to combine them in a way that's more readable than this
+// A subcomponent of the educational or employment information section to input the information for a specific degree or job. this.props.type tells the component whether we are lookign at a degree or a job and renders accordingly
 
 export { StructuredInput };

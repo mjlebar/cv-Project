@@ -32,7 +32,7 @@ class StructuredSection extends Component {
       displayData: [{ number: 1 }],
     };
   }
-  // displayData basically creates an object to be updated when we enter input in the DegreeInput fields. The onChange function constructed in StructuredSection manages this - what happens when we change an individual entry in a structured section - say, a specific job - is that whatever data we change (eg "School: Davidson College") will be passed into the entry in DisplayData with the number corresponding to the section we've changed. So that's why we're updating displayData every time we add or remove an entry but not really putting much into the entries in displayData - the onChange function does that for us.
+  // displayData basically creates an object to be updated when we enter input in the DegreeInput fields. The onChange function constructed in StructuredSection manages this - what happens when we change an individual entry in a structured section - say, a specific degree - is that whatever data we change (eg "School: Davidson College") will be passed into the entry in DisplayData with the number corresponding to the section we've changed. So that's why we're updating displayData every time we add or remove an entry but not really putting much into the entries in displayData - the onChange function does that for us. The if-then statement in the beginnng tells us whether we're dealing with employment or education, and this information will be passed to each entry so that we use the correct type of input
 
   onChange = (item, value, index) => {
     this.setState((state) => ({
@@ -75,7 +75,7 @@ class StructuredSection extends Component {
       displayData: state.displayData.slice(0, -1),
     }));
   };
-  // We need to make sure that degree numbers (ie degree 1, degree 2, etc) update appropriately when we delete a degree. To do this, we not only need to remove the appropriate degree from the array but update each of the entries after it. That's what this array.map then .filter is doing. I know there are other ways to do this (eg array.reduce) but seems the cleanest to me. This is almost identical to the same named method in employment section - I would've combined the two, but I don't know of a convenient way to express the appropriate conditional in JSX yet. The display data slice just knocks off an entry. Since all the entries are renumbered, when we submit they'll fill out displayData correctly
+  // We need to make sure that entry numbers (ie entry 1, entry 2, etc) update appropriately when we delete an entry. To do this, we not only need to remove the appropriate entry from the array but update each of the entries after it. That's what this array.map then .filter is doing. I know there are other ways to do this (eg array.reduce) but seems the cleanest to me. The display data slice just knocks off an entry. Since all the entries are renumbered, when we submit they'll fill out displayData correctly
 
   newEntry = (e) => {
     e.preventDefault();
@@ -96,7 +96,7 @@ class StructuredSection extends Component {
       displayData: state.displayData.concat(newData),
     }));
   };
-  // adds in a new degree, and by updating state rerenders
+  // adds in a new degree or job
 
   render() {
     return (
@@ -109,6 +109,6 @@ class StructuredSection extends Component {
     );
   }
 }
-// this is the part of the input form where education is added. Since we need to have a flexible number of degrees, we include a function to add new degrees. Very similar to employment section but I'm unsure how to combine them.
+// A class for a structured section of input, ie either the education or employment section. Since we need to have a flexible number of entries (ie degrees or jobs), we include a function to add new entries
 
 export { StructuredSection };
